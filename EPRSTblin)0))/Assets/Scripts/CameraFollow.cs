@@ -7,9 +7,9 @@ private Transform player;
 private Vector3 TempPos;
 [SerializeField]
 private float minX, maxX;
-private string PlayerTag = "Player 1"; //заменить нахуй
+private string PlayerTag = "Player 1"; //заменить нахуй блять
  void Start () {
- 		player = GameObject.FindWithTag(PlayerTag).transform; //заменить нахуй
+ 		player = GameObject.FindWithTag(PlayerTag).transform; //заменить нахуй блять
  }
  void Update () {
     TempPos = transform.position;
