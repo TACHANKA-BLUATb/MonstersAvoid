@@ -6,8 +6,9 @@ TagManager:
   tags:
   - Background
   - Ground
-  - Player 1
-  - Player 2
+  - Enemy
+  - Player1
+  - Player2
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - UI
   - 
   - 
-  - Background
-  - GameThings
+  - Enemy
+  - 
   - 
   - 
   - 

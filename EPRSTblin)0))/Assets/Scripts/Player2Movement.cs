@@ -16,9 +16,13 @@ protected Transform player2;
 protected string WALK_ANIMATION2 = "Walk";
 protected bool isGrounded = true;
 protected string GROUND_TAG = "Ground";
+private string ENEMY_TAG = "Enemy"; 
+private string PLAYER_TAG = "Player2";
+private Vector3 TempPos;
+private float minX, maxX;
 
 void Start () {
-	player2 = GameObject.FindWithTag("Player 2").transform;
+	player2 = GameObject.FindWithTag(PLAYER_TAG).transform;
 }
 
 public void Awake(){
@@ -31,6 +35,7 @@ void Update () {
 	PlayerJump();
 	AnimatePlayer();
 	RotatePlayer();
+	CoordinatesLimit();
 }
 	
 protected void PlayerMoveKeyboard(){
@@ -41,6 +46,14 @@ protected void PlayerMoveKeyboard(){
 protected void OnCollisionEnter2D(Collision2D collision){
 	if (collision.gameObject.CompareTag(GROUND_TAG)){
 		isGrounded = true;
+	}
+	if (collision.gameObject.CompareTag(ENEMY_TAG)){
+		Destroy(gameObject);
+	}
+}
+private void OnTriggerEnter2D(Collider2D collision){
+		if (collision.CompareTag(ENEMY_TAG)){
+		Destroy(gameObject);
 	}
 }
 
@@ -74,5 +87,19 @@ protected void RotatePlayer(){
 	} else if (MovementX < 0){
 		player2.localScale = new Vector3(-1.8f, 1.8f, 1f);
 	}
+}
+protected void CoordinatesLimit(){
+    TempPos = transform.position;
+    TempPos.x = player2.position.x;
+	maxX = 39;
+	minX = -39;
+
+    if (TempPos.x < minX)
+    TempPos.x = minX;
+
+    if (TempPos.x > maxX)
+    TempPos.x = maxX;
+
+    transform.position = TempPos;
 }
 }
