@@ -359,7 +359,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 581314310}
-        m_MethodName: StartGame
+        m_MethodName: startGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -507,7 +507,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a77ea0b65b9807743ad4b7faef1a5350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characters: []
+  characters:
+  - {fileID: 1029003709234976, guid: 55600154adf6a4d44aaf61a42acce372, type: 2}
+  - {fileID: 1083813550545424, guid: d1899e0225e26a649b3e528c7650232c, type: 2}
 --- !u!4 &1025882697
 Transform:
   m_ObjectHideFlags: 0
@@ -746,7 +748,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 581314310}
-        m_MethodName: StartGame
+        m_MethodName: startGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
