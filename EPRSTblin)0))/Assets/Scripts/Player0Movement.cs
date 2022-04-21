@@ -2,27 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player2Movement : MonoBehaviour {
+public class Player0Movement : MonoBehaviour {
 [SerializeField]
 protected float MoveForce = 5f;
 [SerializeField]
 protected float JumpForce = 11f;
 protected float MovementX;
-protected string JUMP_ANIMATION21 = "Jump1";
-protected string JUMP_ANIMATION22 = "Jump2";
+protected string JUMP_ANIMATION1 = "Jump1";
 protected Rigidbody2D myBody;
 protected Animator anim;
-protected Transform player2;
-protected string WALK_ANIMATION2 = "Walk";
+protected Transform player1;
+protected string WALK_ANIMATION1 = "Walk1";
 protected bool isGrounded = true;
 protected string GROUND_TAG = "Ground";
+private string PLAYER_TAG = "0";
 private string ENEMY_TAG = "Enemy"; 
-private string PLAYER_TAG = "Player2";
 private Vector3 TempPos;
 private float minX, maxX;
 
 void Start () {
-	player2 = GameObject.FindWithTag(PLAYER_TAG).transform;
+	player1 = GameObject.FindWithTag(PLAYER_TAG).transform;
 }
 
 public void Awake(){
@@ -57,7 +56,7 @@ private void OnTriggerEnter2D(Collider2D collision){
 	}
 }
 
-protected void PlayerJump(){
+private void PlayerJump(){
 	if(Input.GetButtonDown("Jump") && (isGrounded == true)){
 		isGrounded = false;
 	    myBody.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
@@ -65,32 +64,28 @@ protected void PlayerJump(){
 }	
 
 protected void AnimatePlayer(){
-	if (myBody.velocity.y > 0.2){
-		anim.SetBool(WALK_ANIMATION2, false);
-		anim.SetBool(JUMP_ANIMATION21, true);
-	}else if (myBody.velocity.y <-0.2){
-		anim.SetBool(WALK_ANIMATION2, false);
-		anim.SetBool(JUMP_ANIMATION22, true);
-	}else if (MovementX != 0){
-		anim.SetBool(JUMP_ANIMATION21, false);
-		anim.SetBool(JUMP_ANIMATION22, false);
-		anim.SetBool(WALK_ANIMATION2, true);
-	}else {
-		anim.SetBool(JUMP_ANIMATION21, false);
-		anim.SetBool(JUMP_ANIMATION22, false);
-		anim.SetBool(WALK_ANIMATION2, false);
+	if (player1.position.y > 0.4){
+		anim.SetBool(WALK_ANIMATION1, false);
+		anim.SetBool(JUMP_ANIMATION1, true);
+	}else if  (player1.position.y < 0.4){
+		anim.SetBool(JUMP_ANIMATION1, false);
+ 		if (MovementX != 0){
+ 			anim.SetBool(WALK_ANIMATION1, true);
+		}else {
+ 	 		anim.SetBool(WALK_ANIMATION1, false);
+ 		}
 	}
 }
 protected void RotatePlayer(){
 	if (MovementX > 0){
-		player2.localScale = new Vector3(1.8f, 1.8f, 1f);
+		player1.localScale = new Vector3(0.7f, 0.7f, 1f);
 	} else if (MovementX < 0){
-		player2.localScale = new Vector3(-1.8f, 1.8f, 1f);
+		player1.localScale = new Vector3(-0.7f, 0.7f, 1f);
 	}
 }
 protected void CoordinatesLimit(){
     TempPos = transform.position;
-    TempPos.x = player2.position.x;
+    TempPos.x = player1.position.x;
 	maxX = 39;
 	minX = -39;
 

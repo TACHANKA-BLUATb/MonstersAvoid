@@ -9,7 +9,7 @@ private Rigidbody2D myBody;
 	void Awake () {
 		myBody = GetComponent<Rigidbody2D>();
 	}
-		void FixedUpdate () {
+	void FixedUpdate () {
 		myBody.velocity = new Vector2(speed, myBody.velocity.y);
 	}
 }

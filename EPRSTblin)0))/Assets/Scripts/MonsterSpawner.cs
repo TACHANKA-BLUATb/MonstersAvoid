@@ -35,8 +35,4 @@ private int ramdomSide;
 		}
 
 	}
-	
-	void Update () {
-		
-	}
 }
