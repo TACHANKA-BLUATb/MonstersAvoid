@@ -3,31 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CameraFollow : MonoBehaviour {
+public abstract class CameraFollow : MonoBehaviour {
 private Transform player;
 private Vector3 TempPos;
 [SerializeField]
 private float minX, maxX;
-private string PLAYER_TAG;// заменить нахуй
 
-public string ButtonName;
- public CameraFollow(string buttonName){
-   ButtonName = buttonName;
-   Debug.Log(ButtonName);
-     switch (ButtonName){
-        case "0":
-        PLAYER_TAG = "Player1";
-        break;
-
-        case "1":
-        PLAYER_TAG = "Player2";
-        break;
-    }
-    Debug.Log(PLAYER_TAG);
- }
+// public string ButtonName;
+public string PLAYER_TAG;
+//  public CameraFollow(string buttonName){
+//    ButtonName = buttonName;
+//    Debug.Log(ButtonName);
+//      switch (ButtonName){
+//         case "0":
+//         PLAYER_TAG = "Player1";
+//         break;
+//         case "1":
+//         PLAYER_TAG = "Player2";
+//         break;
+//     }
+// }
+ public abstract void StartGame();
 
  void Start () {
- 		player = GameObject.FindWithTag(PLAYER_TAG).transform; //заменить нахуй
+ 		player = GameObject.FindWithTag(PLAYER_TAG).transform; 
     
  }
 
