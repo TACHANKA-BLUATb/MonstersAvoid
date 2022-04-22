@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player1Movement : MonoBehaviour {
-public static Player1Movement instance;
 [SerializeField]
 protected float MoveForce = 5f;
 [SerializeField]
