@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ButtonsGameplayScripts : MonoBehaviour {
 
-public void RestartGame(){
+public void RestartGame()
+{
 	SceneManager.LoadScene("Gameplay");
 }
 
-public void Home(){
+public void Home()
+{
 	SceneManager.LoadScene("MainMenu");
 }
 }

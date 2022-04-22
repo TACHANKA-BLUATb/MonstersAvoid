@@ -4,12 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CoinCollectorScript : MonoBehaviour {
+
 public Text Coins;
 private int score;
-private void Update(){
+
+private void Update()
+{
 	Coins.text = score.ToString();
 }
-public void Jumped(){
+
+public void Jumped()
+{
 	score++;
 }
 }

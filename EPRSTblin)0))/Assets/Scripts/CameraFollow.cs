@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
+
 private Transform player;
 private Vector3 TempPos;
 [SerializeField]
 private float minX, maxX;
+
 void Start () 
 {
   player = GameObject.FindWithTag(GameManager.instance.StringPlayerIndex).transform; 
