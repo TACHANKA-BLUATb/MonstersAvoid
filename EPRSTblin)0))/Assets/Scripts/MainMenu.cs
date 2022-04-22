@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
-   public void startGame(){
+   public void startGame()
+   {
       string stringButtonName = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
       int intButtonName = 
          int.Parse(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name);

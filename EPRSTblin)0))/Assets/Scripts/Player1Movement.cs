@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player1Movement : MonoBehaviour {
+
 [SerializeField]
 protected float MoveForce = 5f;
 [SerializeField]
@@ -21,16 +22,19 @@ private string PLAYER_TAG = "1";
 private Vector3 TempPos;
 private float minX, maxX;
 
-void Start () {
+void Start () 
+{
 	player2 = GameObject.FindWithTag(PLAYER_TAG).transform;
 }
 
-public void Awake(){
+public void Awake()
+{
 	myBody = GetComponent<Rigidbody2D>();
 	anim = GetComponent<Animator>();
 }
 
-void Update () {
+void Update () 
+{
 	PlayerMoveKeyboard();
 	PlayerJump();
 	AnimatePlayer();
@@ -38,57 +42,81 @@ void Update () {
 	CoordinatesLimit();
 }
 	
-protected void PlayerMoveKeyboard(){
+protected void PlayerMoveKeyboard()
+{
 	MovementX = Input.GetAxisRaw("Horizontal");
 	transform.position += new Vector3(MovementX, 0, 0) * Time.deltaTime * MoveForce;
 }
 
-protected void OnCollisionEnter2D(Collision2D collision){
-	if (collision.gameObject.CompareTag(GROUND_TAG)){
+protected void OnCollisionEnter2D(Collision2D collision)
+{
+	if (collision.gameObject.CompareTag(GROUND_TAG))
+	{
 		isGrounded = true;
 	}
-	if (collision.gameObject.CompareTag(ENEMY_TAG)){
+	if (collision.gameObject.CompareTag(ENEMY_TAG))
+	{
 		Destroy(gameObject);
 	}
 }
-private void OnTriggerEnter2D(Collider2D collision){
-		if (collision.CompareTag(ENEMY_TAG)){
-		Destroy(gameObject);
+private void OnTriggerEnter2D(Collider2D collision)
+{
+	if (collision.CompareTag(ENEMY_TAG))
+	{
+	Destroy(gameObject);
 	}
 }
 
-protected void PlayerJump(){
-	if(Input.GetButtonDown("Jump") && (isGrounded == true)){
+protected void PlayerJump()
+{
+	if(Input.GetButtonDown("Jump") && (isGrounded == true))
+	{
 		isGrounded = false;
 	    myBody.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
 	}
 }	
 
-protected void AnimatePlayer(){
-	if (myBody.velocity.y > 0.2){
+protected void AnimatePlayer()
+{
+	if (myBody.velocity.y > 0.2)
+	{
 		anim.SetBool(WALK_ANIMATION2, false);
 		anim.SetBool(JUMP_ANIMATION21, true);
-	}else if (myBody.velocity.y <-0.2){
+	}
+	else 
+	if (myBody.velocity.y <-0.2)
+	{
 		anim.SetBool(WALK_ANIMATION2, false);
 		anim.SetBool(JUMP_ANIMATION22, true);
-	}else if (MovementX != 0){
+	}
+	else 
+	if (MovementX != 0)
+	{
 		anim.SetBool(JUMP_ANIMATION21, false);
 		anim.SetBool(JUMP_ANIMATION22, false);
 		anim.SetBool(WALK_ANIMATION2, true);
-	}else {
+	}
+	else 
+	{
 		anim.SetBool(JUMP_ANIMATION21, false);
 		anim.SetBool(JUMP_ANIMATION22, false);
 		anim.SetBool(WALK_ANIMATION2, false);
 	}
 }
-protected void RotatePlayer(){
-	if (MovementX > 0){
+protected void RotatePlayer()
+{
+	if (MovementX > 0)
+	{
 		player2.localScale = new Vector3(1.8f, 1.8f, 1f);
-	} else if (MovementX < 0){
+	} 
+	else 
+	if (MovementX < 0)
+	{
 		player2.localScale = new Vector3(-1.8f, 1.8f, 1f);
 	}
 }
-protected void CoordinatesLimit(){
+protected void CoordinatesLimit()
+{
     TempPos = transform.position;
     TempPos.x = player2.position.x;
 	maxX = 39;

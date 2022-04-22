@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CameraFollow : MonoBehaviour {
-private Transform player;
-private Vector3 TempPos;
+  
 [SerializeField]
 private float minX, maxX;
+private Transform player;
+private Vector3 TempPos;
+
 void Start () 
 {
   player = GameObject.FindWithTag(GameManager.instance.StringPlayerIndex).transform; 

@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-public static GameManager instance;
 [SerializeField]
 private GameObject[] characters;
+public static GameManager instance;
 public string StringPlayerIndex;
 private int _intPlayerIndex;
 public int IntPlayerIndex
@@ -15,7 +15,9 @@ public int IntPlayerIndex
 	get {return _intPlayerIndex;}
 	set {_intPlayerIndex = value;} 
 }
-private void Awake(){
+
+private void Awake()
+{
 	if (instance == null){
 		instance = this;
 		DontDestroyOnLoad(gameObject);
@@ -24,13 +26,19 @@ private void Awake(){
 		Destroy(gameObject); 
 	}
 }
-private void OnEnable(){
+
+private void OnEnable()
+{
 	SceneManager.sceneLoaded += OnLevelFinishedLoading;
 }
-private void OnDesable(){
+
+private void OnDesable()
+{
 	SceneManager.sceneLoaded -= OnLevelFinishedLoading;
 }
-void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode){
+
+void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+{
 	if (scene.name == "Gameplay"){
 		Instantiate(characters[IntPlayerIndex]);
 	}
