@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\ButtonsGameplayScripts.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\CoinCollectorScript.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\LimitColliders.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />

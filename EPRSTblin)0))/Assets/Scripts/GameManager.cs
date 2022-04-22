@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
-
 public static GameManager instance;
 [SerializeField]
 private GameObject[] characters;
+private CoinCollectorScript Coins;
+public int CoinCollector;
+private int CoinCollectorController;
 public string StringPlayerIndex;
 private int _intPlayerIndex;
 public int IntPlayerIndex
@@ -33,6 +35,16 @@ private void OnDesable(){
 void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode){
 	if (scene.name == "Gameplay"){
 		Instantiate(characters[IntPlayerIndex]);
+		Coins = FindObjectOfType<CoinCollectorScript>();
+	}
+}
+private void Update(){
+	CoinsControl();
+}
+void CoinsControl(){
+	if (CoinCollectorController != CoinCollector){
+		Coins.Jumped();
+		CoinCollectorController = CoinCollector;
 	}
 }
 }

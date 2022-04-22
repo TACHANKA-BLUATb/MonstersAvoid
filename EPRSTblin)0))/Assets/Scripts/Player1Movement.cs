@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player1Movement : MonoBehaviour {
+public static Player1Movement instance;
 [SerializeField]
 protected float MoveForce = 5f;
 [SerializeField]
@@ -101,5 +102,11 @@ protected void CoordinatesLimit(){
     TempPos.x = maxX;
 
     transform.position = TempPos;
+}
+private int _coinCollector = 0;
+public int CoinCollector
+{
+	get {return _coinCollector;}
+	set {_coinCollector = value;} 
 }
 }
