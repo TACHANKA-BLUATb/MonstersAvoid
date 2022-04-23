@@ -9,6 +9,9 @@ public static GameManager instance;
 [SerializeField]
 private GameObject[] characters;
 private CoinCollectorScript Coins;
+private MonsterSpawner Level;
+private CoinCollectorScript CoinCheker;
+private bool LevelModeChek = false;
 public int CoinCollector;
 private int CoinCollectorController;
 public string StringPlayerIndex;
@@ -48,12 +51,19 @@ void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
 	{
 		Instantiate(characters[IntPlayerIndex]);
 		Coins = FindObjectOfType<CoinCollectorScript>();
+		Level = FindObjectOfType<MonsterSpawner>();
+	}
+	if (LevelModeChek == true)
+	{
+	CoinCheker = FindObjectOfType<CoinCollectorScript>();
+	CoinCheker.LevelCoinChek();
 	}
 }
 
 private void Update()
 {
 	CoinsControl();
+	LevelModeActive();
 }
 
 void CoinsControl()
@@ -63,5 +73,34 @@ void CoinsControl()
 		Coins.Jumped();
 		CoinCollectorController = CoinCollector;
 	}
+}
+
+public void LevelModeCheker()
+{
+	LevelModeChek = true;
+}
+
+void LevelModeActive()
+{
+	if (LevelModeChek == true)
+	{
+		switch (CoinCollector){
+			case 10:
+				Level.LevelTwo();
+			break;
+			case 30:
+				Level.LevelThree();
+			break;
+			case 50:
+			LevelModeChek = false;
+			Invoke("sceneLoad", 5);
+			break;
+		}
+	}
+}
+
+void sceneLoad()
+{
+	SceneManager.LoadScene("MainMenu");
 }
 }

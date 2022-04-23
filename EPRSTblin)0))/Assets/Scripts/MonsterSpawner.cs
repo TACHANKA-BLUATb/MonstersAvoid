@@ -12,11 +12,28 @@ private GameObject spawnedMonster;
 private Transform leftPos, rightPos;
 private int randomIndex;
 private int ramdomSide;	
+private int minSpeed = 4;
+private int maxSpawnTime = 5;
 
 void Start ()
 {
 	StartCoroutine(SpawnMomsters());
 }
+
+public void LevelTwo()
+{
+	Debug.Log("level 2");
+	minSpeed = 6;
+	maxSpawnTime = 4;
+}
+
+public void LevelThree()
+{
+	Debug.Log("level 3");
+	minSpeed = 8;
+	maxSpawnTime = 3;
+}
+
 
 IEnumerator SpawnMomsters()
 {
@@ -29,12 +46,12 @@ IEnumerator SpawnMomsters()
 		if (ramdomSide == 0)
 		{
 			spawnedMonster.transform.position = leftPos.position;
-			spawnedMonster.GetComponent<MonsterMovement>().speed = Random.Range(4, 10);
+			spawnedMonster.GetComponent<MonsterMovement>().speed = Random.Range(minSpeed, 10);
 		}
 		else 
 		{
 			spawnedMonster.transform.position = rightPos.position;
-			spawnedMonster.GetComponent<MonsterMovement>().speed = -Random.Range(4, 10);
+			spawnedMonster.GetComponent<MonsterMovement>().speed = -Random.Range(minSpeed, 10);
 			spawnedMonster.transform.localScale = new Vector3(-0.7f, 0.7f, 1f);
 		}
 	}
