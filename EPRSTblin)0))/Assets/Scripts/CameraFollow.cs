@@ -6,12 +6,10 @@ public class CameraFollow : MonoBehaviour {
 
 private Transform player;
 private Vector3 TempPos;
-[SerializeField]
-private float minX, maxX;
 
 void Start () 
 {
-  player = GameObject.FindWithTag(GameManager.instance.StringPlayerIndex).transform; 
+  player = GameObject.FindWithTag(GameConstants.PLAYER_TAG).transform; 
 }
 
 void Update () 
@@ -21,11 +19,11 @@ void Update ()
 
   TempPos = transform.position;
   TempPos.x = player.position.x;  
-  if (TempPos.x < minX)
-    TempPos.x = minX;
+  if (TempPos.x < GameConstants.CAM_MIN_X)
+    TempPos.x = GameConstants.CAM_MIN_X;
 
-  if (TempPos.x > maxX)
-    TempPos.x = maxX; 
+  if (TempPos.x > GameConstants.CAM_MAX_X)
+    TempPos.x = GameConstants.CAM_MAX_X; 
 
   transform.position = TempPos;
 }

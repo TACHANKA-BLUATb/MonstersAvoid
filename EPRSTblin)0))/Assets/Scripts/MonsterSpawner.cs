@@ -7,43 +7,39 @@ public class MonsterSpawner : MonoBehaviour {
 [SerializeField]
 private GameObject[] monsterReference;
 private GameObject spawnedMonster;
-
-[SerializeField]
 private Transform leftPos, rightPos;
 private int randomIndex;
-private int ramdomSide;	
+private int randomSide;	
 private int minSpeed = 4;
 private int maxSpawnTime = 5;
 
 void Start ()
 {
-	StartCoroutine(SpawnMomsters());
+	StartCoroutine(SpawnMonsters());
 }
 
 public void LevelTwo()
 {
-	Debug.Log("level 2");
 	minSpeed = 6;
 	maxSpawnTime = 4;
 }
 
 public void LevelThree()
 {
-	Debug.Log("level 3");
 	minSpeed = 8;
 	maxSpawnTime = 3;
 }
 
 
-IEnumerator SpawnMomsters()
+IEnumerator SpawnMonsters()
 {
 	while (true)
 	{
 		yield return new WaitForSeconds(Random.Range(1,5));
 		randomIndex = Random.Range(0, monsterReference.Length);
-		ramdomSide = Random.Range(0, 2);
+		randomSide = Random.Range(0, 2);
 		spawnedMonster = Instantiate(monsterReference[randomIndex]);
-		if (ramdomSide == 0)
+		if (randomSide == 0)
 		{
 			spawnedMonster.transform.position = leftPos.position;
 			spawnedMonster.GetComponent<MonsterMovement>().speed = Random.Range(minSpeed, 10);

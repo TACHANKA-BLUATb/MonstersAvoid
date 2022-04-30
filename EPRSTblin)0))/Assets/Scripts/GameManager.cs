@@ -15,12 +15,7 @@ private bool LevelModeChek = false;
 public int CoinCollector;
 private int CoinCollectorController;
 public string StringPlayerIndex;
-private int _intPlayerIndex;
-public int IntPlayerIndex
-{
-	get {return _intPlayerIndex;}
-	set {_intPlayerIndex = value;} 
-}
+public int IntPlayerIndex;
 
 private void Awake()
 {

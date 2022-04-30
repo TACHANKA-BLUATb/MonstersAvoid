@@ -447,6 +447,7 @@ MonoBehaviour:
   - {fileID: 1083813550545424, guid: d1899e0225e26a649b3e528c7650232c, type: 2}
   CoinCollector: 0
   StringPlayerIndex: 
+  IntPlayerIndex: 0
 --- !u!4 &812226335
 Transform:
   m_ObjectHideFlags: 0

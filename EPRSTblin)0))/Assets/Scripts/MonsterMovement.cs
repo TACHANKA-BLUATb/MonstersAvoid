@@ -8,16 +8,16 @@ public class MonsterMovement : MonoBehaviour {
 public float speed;
 public Transform Player;
 private Rigidbody2D myBody;
-private bool InsaneControl = true;
+private bool CoinControl = true;
 
 void Start()
 {
-	Player = GameObject.FindWithTag(GameManager.instance.StringPlayerIndex).transform;
+	Player = GameObject.FindWithTag(GameConstants.PLAYER_TAG).transform;
 }
 
 void Awake ()
 {
-	myBody = GetComponent<Rigidbody2D>();
+	myBody = GetComponent<Rigidbody2D>();	
 }
 
 void FixedUpdate ()
@@ -27,14 +27,14 @@ void FixedUpdate ()
 
 void Update()
 {
-	if (InsaneControl == true & Player)
+	if (CoinControl == true & Player)
 	{
 		if (Player.position.y > 0.9)
 		{
 			if (Player.position.x - transform.position.x < 0.5 & Player.position.x - transform.position.x > -0.5)
 			{
 				GameManager.instance.CoinCollector = GameManager.instance.CoinCollector + 1;
-				InsaneControl = false;
+				CoinControl = false;
 			}
 		}
 	}
